@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: service-main
+  grpc:
+    client:
+      channels:
+        aggregatorService:
+          address: static://localhost:9093

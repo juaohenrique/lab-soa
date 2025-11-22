@@ -1,0 +1,15 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: service-c
+  grpc:
+    server:
+      port: 9093  # porta gRPC do service-c
+    client:
+      imageServiceA:
+        address: "static://localhost:9091"
+        negotiationType: plaintext
+      imageServiceB:
+        address: "static://localhost:9092"
+        negotiationType: plaintext

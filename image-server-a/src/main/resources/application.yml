@@ -1,0 +1,8 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: service-a
+  grpc:
+    server:
+      port: 9091  # porta gRPC do service-a

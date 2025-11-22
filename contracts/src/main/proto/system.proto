@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package system;
+
+option java_package = "br.com.jh.contracts";
+option java_multiple_files = true;
+
+// ----------------------
+// Service de imagem (A/B)
+// ----------------------
+
+service ImageService {
+  rpc GetImage (ImageRequest) returns (ImageResponse);
+}
+
+message ImageRequest {
+  string imageId = 1;
+}
+
+message ImageResponse {
+  bytes data = 1;
+  string contentType = 2;
+}
+
+// --------------------------
+// Service agregador (C/main)
+// --------------------------
+
+service AggregatorService {
+  rpc GetAggregatedImage (AggregatedImageRequest) returns (ImageResponse);
+  // reaproveita ImageResponse diretamente, sem import
+}
+
+message AggregatedImageRequest {
+  string userId = 1;
+  string source = 2; // "A", "B", "AUTO" etc.
+}
